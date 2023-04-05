@@ -4,6 +4,8 @@ import Loader from './Loader/Loader';
 import Modal from './Modal/Modal';
 import { Component } from 'react';
 import getImagesApi from 'servises/imageApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export class App extends Component {
   state = {
     page: 1,
@@ -54,6 +56,7 @@ export class App extends Component {
           this.setState({
             images: [...dataImages.data.hits],
           });
+          toast.success(`Знайдено ${dataImages.data.totalHits} зображень `);
         } else {
           this.setState({
             images: [...prevState.images, ...dataImages.data.hits],
@@ -87,13 +90,13 @@ export class App extends Component {
         }}
       >
         <Searchbar handleFormSubmit={this.handleFormSubmit} />
+        <ToastContainer />
         <ImageGallery
           images={images}
           showModalImage={this.showModalImage}
           changePage={this.changePage}
         />
         {loading && <Loader />}
-
         {showModal && <Modal onClose={this.toggleModal} image={imageURL} />}
       </div>
     );

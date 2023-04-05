@@ -14,7 +14,9 @@ const ImageGallery = ({ images, showModalImage, changePage }) => {
             />
           ))}
       </ul>
-      {images.length > 0 && <Button changePage={changePage} />}
+      {images.length > 0 && images.length % 12 === 0 && (
+        <Button changePage={changePage} />
+      )}
     </>
   );
 };

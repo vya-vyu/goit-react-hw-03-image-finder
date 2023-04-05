@@ -14,7 +14,7 @@ class Searchbar extends Component {
     if (this.state.searchName.trim() === '') return;
 
     this.props.handleFormSubmit(this.state.searchName);
-    this.setState({ searchName: '' });
+    // this.setState({ searchName: '' });
   };
   render() {
     return (
